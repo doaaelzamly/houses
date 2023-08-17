@@ -1,0 +1,48 @@
+
+.heroContainer{
+    background-image: url(../../Util/imgs/hero.png);
+    width: 100%;
+    height: 100vh;
+    border: none;
+    margin: 0px;
+    padding-top: 10px;
+}
+
+.heroContent{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#search{
+    width: 38vw;
+    height: 7.4vh;
+}
+
+#heroSearch{
+    width: 31vw;
+    height: 2vh;
+    background-color: #fff;
+    border-radius: 10px 0 0 10px;
+}
+
+.searchBtn{
+    width: 1vw;
+    height: 7.35vh;
+    border-radius: 0 10px 10px 0px;
+}
+
+.cardContainer{
+    width: 100%;
+    margin-top: 50px;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
