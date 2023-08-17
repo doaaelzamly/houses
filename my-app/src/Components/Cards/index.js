@@ -92,27 +92,41 @@ import Typography from '@mui/material/Typography';
 
 export default function MediaCard({house}) {
 
-  const {title, image} = house;
+  const {title, 
+    bathroom, 
+    bedroom, 
+    location, 
+    description, 
+    category, 
+    price} = house;
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
+      {/* <CardMedia
         sx={{ height: 140 }}
-        image={image}
+        // image={image}
          
-      />
+      /> */}
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
         {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+        {description}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {bathroom}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {bedroom}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {category}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">{price}</Button>
+        <Button size="small">{location}</Button>
       </CardActions>
     </Card>
   );
