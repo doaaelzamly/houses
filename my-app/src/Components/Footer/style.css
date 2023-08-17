@@ -1,0 +1,9 @@
+.footer{
+  background-color: #314E7E;
+}
+
+.iconFooter{
+  width: 7vw;
+  display: flex;
+  justify-content: space-between;
+}
