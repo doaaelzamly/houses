@@ -1,24 +1,27 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import { Box } from '@mui/material';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import BdsIcon from '@mui/icons-material/Hotel';
-import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
+import React, {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
+import { Box, Typography, Card, CardMedia, CardContent} from '@mui/material';
 import BathIcon from '@mui/icons-material/Bathtub';
 import PlaceIcon from '@mui/icons-material/Place';
-
-
+import BdsIcon from '@mui/icons-material/Hotel';
+import Layout from '../Layout';
 
 import './style.css';
 
+function Detail() {
+  const [house, setHouses] = useState([]);
+  const { id } = useParams();
 
-
-
-export default function MediaCard({house}){
+  useEffect(() => {
+    fetch(`https://my-json-server.typicode.com/doaaelzamly/mock-api/houses/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setHouses(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const {title, 
         bathroom, 
@@ -28,20 +31,18 @@ export default function MediaCard({house}){
         price,
         image} = house;
 
-       
-
-  const descriptionString = JSON.stringify(description);
-  const slicedDescription = descriptionString.slice(0, 70);
-
 
 
   return (
+    <Layout>
+
     <Card sx={{ maxWidth: '22vw', height:'62vh', borderRadius: '10px', margin: '10px'}}>
       <CardMedia
         sx={{ height: 180 }}
         image={image}
         title="Image House"
       />
+
       <CardContent className='CardContent'>
         <Box className="CardContentTitle">
           <Typography gutterBottom variant="h6" component="h2">
@@ -72,18 +73,13 @@ export default function MediaCard({house}){
         </Box>
         
         <Typography variant="body2" color="text.secondary">
-        {slicedDescription}
+        {description}
         </Typography>
       </CardContent>
-      
-      <CardActions className='cardActions'>
-        <Link to={`{/details}/${house.id}`} className="detailsLink">
-          View More
-        </Link>
-
-      <FavoriteIcon/>
-      </CardActions>
     </Card>
-
+    </Layout>
   );
 }
+
+
+export default Detail;
