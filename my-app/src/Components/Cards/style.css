@@ -3,15 +3,6 @@
     justify-content: space-around;
 }
 
-.btn{
-    width: 70%;
-    background-color: #006AFF;
-}
-
-.btn:hover{
-    background-color: #032a61;
-}
-
 .CardContent{
     display: flex;
     flex-direction: column;
@@ -32,4 +23,18 @@
 .CardContentTitle{
     display: flex;
     justify-content: space-between;
+}
+
+.detailsLink{
+    width: 70%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.detailsLink:hover{
+    background-color: #314E7E;
 }
