@@ -1,0 +1,69 @@
+.CardContentTitle1{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+
+
+.detailsLink1{
+  font-family: sans-serif;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 50px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.detailsLink1:hover{
+  background-color: #314E7E;
+}
+
+.Description{
+  width: 70%;
+  padding-left: 25px;
+  text-align: start;
+}
+
+.agentData{
+  border: 2px solid #00000050;
+  border-radius: 10px;
+  width: 65%;
+  height: 19vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 25px;
+}
+
+.agent{
+  display: flex;
+}
+
+.root{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 3em;
+  color: black;
+  width: 100%;
+  min-height: 800px;
+}
+  
+.title{
+  padding-top: 1em;
+  text-transform: capitalize;
+}
+
+.detailsCardBox1{
+  display: flex;
+  padding-left: 25px;
+  gap: 10px;
+}
+.descBtn{
+  margin-bottom: 20px;
+}
+
+
+ 

@@ -16,7 +16,7 @@ import './style.css';
 function Footer() {
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ bgcolor: "#314E7E", height: "65px" }}>
       <Container maxWidth="xl" className='footer'>
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 0 }}>
@@ -33,8 +33,6 @@ function Footer() {
           © 2023 Homly. All rights reserved
           </Typography>
 
-
-          
           <Box sx={{ flexGrow: 1 }} />
        
           <Box className='iconFooter'>

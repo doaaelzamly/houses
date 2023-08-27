@@ -1,0 +1,27 @@
+.divabout {
+    border-radius: 15px;
+    margin: 20px;
+    width: 100%;
+    height: 77vh;
+    padding: 0;
+}
+.titleAbout {
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #007bff;
+}
+.aboutPara  {
+    margin-top: 20px;
+    line-height: 2.5;
+    font-size: 0.5em;
+    color: #1E1E1E;
+    text-align: left;
+}
+
+.aboutImg{
+    padding-top: 10px;
+    border-radius: 20px;
+}

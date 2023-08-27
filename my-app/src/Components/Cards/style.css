@@ -26,13 +26,17 @@
 }
 
 .detailsLink{
-    width: 70%;
+    width: 62%;
     background-color: #007bff;
     color: #fff;
-    padding: 10px 12px;
+    padding: 9px 10px;
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
+    font-family: "Roboto";
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px; 
 }
 
 .detailsLink:hover{
