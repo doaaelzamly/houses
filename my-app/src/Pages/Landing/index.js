@@ -1,4 +1,5 @@
-import React, {useState, useEffect}  from 'react'; 
+import React, {useState, useEffect }  from 'react'; 
+import { Link , useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button, IconButton, Tooltip} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
@@ -13,7 +14,12 @@ import '../Landing/style.css';
 const Landing = ()=> {
     const [house, setHouses] = useState([]);
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
 
+
+    const handelfilter = () => {
+        navigate('/filter')
+    }
     
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/doaaelzamly/mock-api/houses")
@@ -75,9 +81,11 @@ const Landing = ()=> {
             </Typography>
 
 
-            <Box id='search'>
-                <TextField type="search" variant="outlined" placeholder="Place, Neighborhood." id='heroSearch'/>
-                <Button variant="contained" className='searchBtn'> <SearchIcon/></Button>
+            <Box id='searchBox'>
+                <TextField type="search" variant="outlined" placeholder="Place, Neighborhood." id='heroSearch' onClick={handelfilter}/>
+                <Link to={`/filter`} className="search">
+                    <SearchIcon/>
+                </Link> 
             </Box>
         </Box>
     </Box>
@@ -93,8 +101,17 @@ const Landing = ()=> {
                 reviews and local insights to find what is right for you.
             </Typography>
         </Box>
+
         <Box className="card">
-            <CardContainer houses={house}/> 
+            
+            {/* {house && house.length > 0 ? (
+                house.slice(0,4).map((house)=>(
+                    <CardContainer houses={house}/>
+                ))
+            ):(
+                <p>Loading...</p>
+            )} */}
+            <CardContainer houses={house}/>
         </Box>  
 
     </Box>

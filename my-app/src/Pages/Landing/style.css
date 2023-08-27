@@ -1,4 +1,9 @@
 
+.logo{
+    width: 4rem;
+    height: 3rem;
+}
+
 .heroContainer{
     background-image: url(../../Util/imgs/hero.png);
     width: 100%;
@@ -17,22 +22,19 @@
     align-items: center;
 }
 
-#search{
+#searchBox{
     width: 38vw;
     height: 7.4vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
 #heroSearch{
-    width: 31vw;
+    width: 28vw;
     height: 2vh;
     background-color: #fff;
-    border-radius: 10px 0 0 10px;
-}
-
-.searchBtn{
-    width: 1vw;
-    height: 7.35vh;
-    border-radius: 0 10px 10px 0px;
+    border-radius: 10px;
 }
 
 .cardContainer{
@@ -40,13 +42,13 @@
     margin-top: 50px;
 }
 
-.card{
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    overflow-y: hidden;
-    height: 64vh;
+
+.search{
+    position: absolute;
+    right: 54px;
+    background-color: #007bff;
+    border-radius: 0 10px 10px 0px;
+    color: #fff;
+    padding: 9px 12px;
 }
 
