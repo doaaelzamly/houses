@@ -40,11 +40,11 @@ export default function MediaCard({house}){
   const [isFavorite, setIsFavorite] = useState(false);
   const addToFavorite = async (id) => {
     const response = await fetch(
-      `https://my-json-server.typicode.com/doaaelzamly/mock-api/houses/${id}`
+      `https://my-json-server.typicode.com/sohaalakhras/mockread-api/houses/${id}`
     );
     const item = await response.json();
     fetch(
-      "https://my-json-server.typicode.com/doaaelzamly/mock-api/favorite",
+     "https://my-json-server.typicode.com/sohaalakhras/mockread-api/favorites",
       {
         method: "POST",
         headers: {

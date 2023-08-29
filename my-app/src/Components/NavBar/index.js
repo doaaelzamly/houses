@@ -151,43 +151,7 @@ function NavBar() {
           
             <Button sx={{ my: 2, color: "white", display: "block" }}></Button>
           </Box>
-          {/* {isAuth ? (
-            <>
-              <Box>
-                <Button
-                 onClick={handlregister}
-                  className="btn"
-                  sx={{
-                    marginRight: 2,
-                    color: "white",
-                    bgcolor: "#F8C405",
-                    fontWeight: "500",
-                    "&:hover": {
-                      backgroundColor: "white",
-                      color: "#009688",
-                    },
-                  }}
-                >
-                  SIGNUP
-                </Button>
-                <Button
-                  onClick={handlelogin}
-                  sx={{
-                    marginRight: 2,
-                    color: "#009688",
-                    bgcolor: "white",
-                    fontWeight: "500",
-                    "&:hover": {
-                      backgroundColor: "#F8C405",
-                      color: "white",
-                    },
-                  }}
-                >
-                  LOGIN
-                </Button>
-              </Box>
-            </>
-          ) : ( */}
+          
             <>
               <div>
               <Button

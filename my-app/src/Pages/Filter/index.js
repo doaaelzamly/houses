@@ -2,10 +2,8 @@ import React, { useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button, IconButton, Tooltip, Grid} from '@mui/material';
-import Menu from '@mui/material/Menu';
 import InputLabel from "@mui/material/InputLabel";
 import Container from "@mui/material/Container";
-import Slider from "@mui/material/Slider";
 import SearchIcon from "@mui/icons-material/SearchSharp";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -57,20 +55,17 @@ function SearchPage() {
       });
   }, []);
 
+
   const handleSearch = (event) => {
     event.preventDefault();
-    let filterarray = houses.filter((houses)=>(!location ? true : houses.location === location))
-    .filter((houses)=>(!bedrooms ? true : houses.bedrooms === parseInt(bedrooms)))
+    let filterarray = houses
+    .filter((houses)=>(location ? houses.location === location : true))
+    .filter((houses)=>(bedrooms ? houses.bedroom === parseInt(bedrooms): true))
+    .filter((houses)=>(bathdrooms ? houses.bathroom === parseInt(bathdrooms): true))
+    .filter((houses)=>(price ? houses.price === parseInt(price): true))
     setFilteredHouses(filterarray);
-    console.log(filterarray,'aya');
-  //   const filteredHouses = houses.filter((house) =>
-  //   (!location || house.location.toLowerCase() === location.toLowerCase()) 
-  //   (bedrooms && house.bedroom === parseInt(bedrooms)) ||
-  //   (bathdrooms && house.bathdrooms === +bathdrooms) ||
-  //   (price && house.price >= price[0] && house.price <= price[1])
-  // );
-   // setFilteredHouses(filteredHouses);
   };
+ 
 
   return (
   <Layout>
@@ -78,7 +73,7 @@ function SearchPage() {
         <Box className='form'>
            <form id='searchBox'>
                 <TextField type="search" variant="outlined" placeholder="Place, Neighborhood." id='heroSearch' onChange={handleCategroy}/>
-                <Button sx={{minWidth: 30, bgcolor: '#007bff', color:'#fff', "&:hover": {
+                <Button sx={{minWidth: '4vw', bgcolor: '#007bff', color:'#fff', height:'7.2vh', "&:hover": {
                         backgroundColor: "#007bff"}}} onClick={handleSearch}>
                     <SearchIcon/>
                 </Button> 
