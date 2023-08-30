@@ -9,7 +9,7 @@ Most of those who are looking for a house find it very difficult to search and w
 # 💡Solution
 Homely is a web-based platform designed to help individuals find the homes of their dreams. The site allows the user to search for available homes based on various criteria such as:
 
--Browse an extensive list of homes available for rent in different regions.
+📍Browse an extensive list of homes available for rent in different regions.
 -Search for homes according to budget, location, number of rooms and more criteria.
 -View detailed details for each home, including photos, descriptions, and more.
 -Save favorite homes and compare them later.
