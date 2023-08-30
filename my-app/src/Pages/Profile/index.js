@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Tabs, Tab, Box } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -13,9 +14,14 @@ import Layout from '../Layout';
 
 const VerticalTabs = () => {
   const [value, setValue] = React.useState('1');
+  const navigate = useNavigate();
 
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleLogout = () => {
+    navigate('/'); 
   };
 
   return (
@@ -28,7 +34,7 @@ const VerticalTabs = () => {
                         <Tab label="Houses" value="2" />
                         <Tab label="Add House" value="3" />
                         <Tab label="Favorite" value="4" />
-                        <Tab label="Log out" value="5" sx={{color:'red'}}/>
+                        <Tab label="Log out" value="5" sx={{color:'red'}} onClick={handleLogout}/>
                       </TabList>
                   </Box>
                   <TabPanel value="1"><ProfileInfo handleChange={handleTabChange}/></TabPanel>

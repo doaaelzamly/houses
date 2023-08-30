@@ -14,9 +14,6 @@ import PlaceIcon from '@mui/icons-material/Place';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-
-
-
 import './style.css';
 
 

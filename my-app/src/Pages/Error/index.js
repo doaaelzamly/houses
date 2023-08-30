@@ -7,8 +7,8 @@ import './style.css';
 
 function ErrorPage() {
 
-return<Layout>
-    <Container style={{padding:'40px'}} className="errorContainer">
+return<>
+ <Container style={{padding:'40px'}} className="errorContainer">
         <Typography variant="h6" 
             sx={{ 
                 fontSize: '1.8rem', 
@@ -22,6 +22,8 @@ return<Layout>
         <Box sx={{ flexGrow: 1 }} />
         <Link to={'/'} className="btnBack" important >Back to Home</Link>
     </Container>
-    </Layout>
+</>
+   
+    
 }
 export default ErrorPage;

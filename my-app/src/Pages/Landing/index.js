@@ -1,5 +1,7 @@
 import React, {useState, useEffect }  from 'react'; 
 import { Link , useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Box, Typography, TextField, Button, IconButton, Tooltip} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
@@ -11,7 +13,6 @@ import logo from '../../Util/imgs/logo.png';
 import Footer from '../../Components/Footer'
 import CardContainer from '../../Components/CardContainer';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Login from '../../Components/Login';
 import LoginSignup from '../LoginSignup';
 import { useAuth } from '../Context';
 import '../Landing/style.css';
@@ -25,6 +26,7 @@ const Landing = ()=> {
     const { isLoggedIn } = useAuth();
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [logout, setLogout] = useState(false);
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -35,21 +37,33 @@ const Landing = ()=> {
     };
 
     const handleClose = () => {
-        setOpen(false);
-    };
+        setAnchorEl(null);
+      };
 
     const handelfilter = () => {
         navigate('/filter')
     }
 
-    const handleabout = () => {
-        navigate("/about");
-    };
 
     const handleProfile = () => {
         navigate("/profile");
     };
 
+
+    const handleout = () => {
+        setLogout(!logout);
+        if (!logout) {
+            navigate("/");
+          toast.success('Signed out', {
+            position: 'bottom-left',
+            autoClose: 1500, 
+            style: {
+              color: '#4CAF50',
+              boxShadow: '0px 2px 4px rgba(0, 128, 0, 0.1)'
+            },
+          });
+        }
+      };
     
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/doaaelzamly/mock-api2/houses")
@@ -96,7 +110,7 @@ const Landing = ()=> {
                                     onClick={handleMenu}
                                     color="#000"
                                 >
-                                    <AccountCircle />
+                                    <AccountCircle sx={{width:'3vw', height:'6vh', color:'#ffffff'}}/>
                                 </IconButton>
 
                                 <Menu
@@ -115,7 +129,7 @@ const Landing = ()=> {
                                     onClose={handleClose}
                                 >
                                     <MenuItem onClick={handleProfile}>Profile</MenuItem>
-                                    <MenuItem onClick={handleClose}>Log out</MenuItem>
+                                    <MenuItem onClick={handleout}>Log out</MenuItem>
                                 </Menu>
                                 </Box>
                         ) : (
