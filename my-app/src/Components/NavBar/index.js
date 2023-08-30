@@ -22,10 +22,9 @@ function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [logout, setLogout] = useState(false);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn , logout } = useAuth();
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -56,9 +55,8 @@ function NavBar() {
 };
 
 const handleout = () => {
-  setLogout(!logout);
-  if (!logout) {
-      navigate("/");
+  logout();
+  navigate("/");
     toast.success('Signed out', {
       position: 'bottom-left',
       autoClose: 1500, 
@@ -67,7 +65,7 @@ const handleout = () => {
         boxShadow: '0px 2px 4px rgba(0, 128, 0, 0.1)'
       },
     });
-  }
+  
 };
 
   return (

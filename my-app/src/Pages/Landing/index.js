@@ -23,10 +23,11 @@ const Landing = ()=> {
     const [products, setProducts] = useState([]);
     const [bestHouse, setBestHouse] = useState([]);
     const navigate = useNavigate();
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn , logout } = useAuth();
     const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [logout, setLogout] = useState(false);
+    
+
 
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
@@ -51,9 +52,8 @@ const Landing = ()=> {
 
 
     const handleout = () => {
-        setLogout(!logout);
-        if (!logout) {
-            navigate("/");
+        logout();
+        navigate("/");
           toast.success('Signed out', {
             position: 'bottom-left',
             autoClose: 1500, 
@@ -62,8 +62,8 @@ const Landing = ()=> {
               boxShadow: '0px 2px 4px rgba(0, 128, 0, 0.1)'
             },
           });
-        }
-      };
+        
+    };
     
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/doaaelzamly/mock-api2/houses")

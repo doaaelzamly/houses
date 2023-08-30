@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import Typography from "@mui/material/Typography";
-import { Avatar, Box } from "@mui/material";
+import { Avatar } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableContainer from "@mui/material/TableContainer";
 import FormControl from "@mui/material/FormControl";
@@ -83,10 +83,7 @@ function Profile() {
           <span style={{color:'#007bff'}}>My</span> Profile
         </Typography>
         <div className="userAvatar"  style={{padding:'20px'}}>
-          <Avatar
-            className="avatar"
-            sx={{ width: 120, height: 120 }}
-          >{image}</Avatar>
+          <Avatar sx={{ width: 120, height: 120 }}/>
         </div>
         <Table>
           <TableBody>

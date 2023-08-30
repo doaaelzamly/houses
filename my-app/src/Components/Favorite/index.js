@@ -46,7 +46,7 @@ function Favorite() {
       border: 0,
     },
   }));
-
+  
   const [houses, setHouses] = useState([]);
   const [errorMsg, setError] = useState("");
   const [refresh, setRefresh] = useState(false);
