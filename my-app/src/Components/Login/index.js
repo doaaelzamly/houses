@@ -56,21 +56,18 @@ const Login = ({ handleChange })=>{
 
         // Handle login logic
         if (username.trim() !== '' && password !== '') {
-            try {
-                const response = await fetch('https://my-json-server.typicode.com/sohaalakhras/mockread-api/users');
+           
+                const response = await fetch('https://my-json-server.typicode.com/doaaelzamly/mock-api2/user');
                 const users = await response.json();
                 const user = users.find(u => u.username === username && u.password === password);
 
                 if (user) {
-                    console.log('Login successful');
                     login();
                     handleClose();
                 } else {
                     setLoginError(true);
                 }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+          
         }
     };
   
@@ -115,7 +112,7 @@ const Login = ({ handleChange })=>{
                     size="small"
                 />
                 <Typography>
-                    <Link href='#' style={{textDecoration:'none', fontSize:'13px'}}>Forgot Password ?</Link>
+                    <Link href='g' style={{textDecoration:'none', fontSize:'13px'}}>Forgot Password ?</Link>
                 </Typography>
                 <br/>
                 <Button variant="contained" color="primary" onClick={handleLogin} fullWidth>

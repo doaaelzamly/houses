@@ -20,6 +20,7 @@ import '../Landing/style.css';
 const Landing = ()=> {
     const [house, setHouses] = useState([]);
     const [products, setProducts] = useState([]);
+    const [bestHouse, setBestHouse] = useState([]);
     const navigate = useNavigate();
     const { isLoggedIn } = useAuth();
     const [open, setOpen] = useState(false);
@@ -45,17 +46,19 @@ const Landing = ()=> {
         navigate("/about");
     };
 
-    const handlehome = () => {
-        navigate("#");
+    const handleProfile = () => {
+        navigate("/profile");
     };
 
     
   useEffect(() => {
-    fetch("https://my-json-server.typicode.com/sohaalakhras/mockread-api/houses")
+    fetch("https://my-json-server.typicode.com/doaaelzamly/mock-api2/houses")
       .then((response) => response.json())
       .then((data) => {
         setHouses(data);
         setProducts(data);
+        const bestSlice = data.slice(0,3);
+        setBestHouse(bestSlice);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -63,8 +66,7 @@ const Landing = ()=> {
   }, []);
 
 
-  const filteredProducts = products.filter(product => product.price < 900);
-
+  const filteredProducts = products.filter(product => product.price < 900).slice(0,4);
 
     return <>
     <Box className ='heroContainer'>
@@ -85,28 +87,7 @@ const Landing = ()=> {
 
                         {isLoggedIn ? (
 
-                                <Box
-                                sx={{
-                                flexGrow: 1,
-                                display: { xs: "none", md: "flex" },
-                                justifyContent: "center",
-                                alignItems: "center",
-                                }}
-                                >
-                                <Button
-                                onClick={handlehome}
-                                sx={{ my: 2, color: "#000", display: "block" }}>
-                                Home
-                                </Button>
-                                <Button
-                                onClick={handleabout}
-                                sx={{ my: 2, color: "#000", display: "block" }}
-                                >
-                                About us
-                                </Button>
-
-                                <Button sx={{ my: 2, color: "white", display: "block" }}></Button>
-
+                                <Box >
                                 <IconButton
                                     size="large"
                                     aria-label="account of current user"
@@ -133,7 +114,7 @@ const Landing = ()=> {
                                     open={Boolean(anchorEl)}
                                     onClose={handleClose}
                                 >
-                                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                    <MenuItem onClick={handleProfile}>Profile</MenuItem>
                                     <MenuItem onClick={handleClose}>Log out</MenuItem>
                                 </Menu>
                                 </Box>
@@ -181,22 +162,14 @@ const Landing = ()=> {
             <Typography gutterBottom variant="h5" component="h2" style={{fontWeight:"600", textAlign:'center'}}>
                 Newly listed homes on Homely
             </Typography>
-            <Typography gutterBottom variant="body1" style={{textAlign:'center'}}>
+            <Typography gutterBottom variant="body2" style={{textAlign:'center'}}>
                 Take a deep dive and browse homes for sale, original neighborhood photos, resident <br/>
                 reviews and local insights to find what is right for you.
             </Typography>
         </Box>
-
+<br/>
         <Box className="card">
-            
-            {/* {house && house.length > 0 ? (
-                house.slice(0,4).map((house)=>(
-                    <CardContainer houses={house}/>
-                ))
-            ):(
-                <p>Loading...</p>
-            )} */}
-            <CardContainer houses={house}/>
+            <CardContainer houses={bestHouse}/>
         </Box>  
 
     </Box>
@@ -207,10 +180,11 @@ const Landing = ()=> {
             <Typography gutterBottom variant="h5" component="h2" style={{fontWeight:"600", textAlign:'center'}}>
                 Best Seller on Homely
             </Typography>
-            <Typography gutterBottom variant="body1" style={{textAlign:'center'}}>
+            <Typography gutterBottom variant="body2" style={{textAlign:'center'}}>
                 Take a deep dive and browse homes for sale and rent and get discounts
             </Typography>
         </Box>
+        <br/>
         <Box className="card">
             <CardContainer houses={filteredProducts}/>
         </Box>  

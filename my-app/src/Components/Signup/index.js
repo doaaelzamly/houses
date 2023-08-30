@@ -13,6 +13,9 @@ const Signup = ({ handleChange })=>{
     const [email, setEmail] = useState('');
     const [ConfirmPassword, setConfirmPassword] = useState('');
     const [phone, setPhone] = useState('');
+    const [usernameError, setUsernameError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+    
   
     const handleOpen = () => {
       setOpen(true);
@@ -20,13 +23,38 @@ const Signup = ({ handleChange })=>{
   
     const handleClose = () => {
       setOpen(false);
+      resetForm();
     };
+
+    const resetForm = () => {
+        setUsername('');
+        setPassword('');
+        setUsernameError(false);
+        setPasswordError(false);
+      
+    };
+    const handleLogin = async () => {
+      setUsernameError(true);
+      setPasswordError(true);
+      
+      if (username.trim() === '') {
+          setUsernameError(true);
+      } else {
+          setUsernameError(false);
+      }
+
+      if (password === '' || password.length !== 8 ) {
+          setPasswordError(true);
+      } else {
+          setPasswordError(false);
+      }
+  };
   
     return(
     <Box>
             <Grid align='center'>
                 <Avatar sx={{ bgcolor: '#007bff' }}><AddIcon/></Avatar>
-                <DialogTitle style={{textAlign:'center'}}>Welcome to Homely</DialogTitle>
+                <DialogTitle style={{textAlign:'center', padding:'6px'}}>Welcome to Homely</DialogTitle>
             </Grid>
 
             <DialogContent sx={{display:'flex', flexDirection:'column'}} className='signUpContent' >
@@ -34,7 +62,12 @@ const Signup = ({ handleChange })=>{
                     label="Username"
                     value={username}
                     fontSize='5px'
-                    onChange={(e) => setUsername(e.target.value)}
+                    error={usernameError}
+                    helperText={usernameError ? 'Username is required' : ''}
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                        setUsernameError(false);
+                    }}
                     fullWidth
                     required
                     margin='0'
@@ -48,7 +81,7 @@ const Signup = ({ handleChange })=>{
                     fullWidth
                     size="small"
                     style={{
-                      marginTop: '10px'
+                      marginTop: '9px'
                     }}
                 />
                 <TextField
@@ -59,36 +92,45 @@ const Signup = ({ handleChange })=>{
                     fullWidth
                     size="small"
                     style={{
-                      marginTop: '10px'
+                      marginTop: '9px'
                     }}
                 />
                 <TextField
                     label="Password"
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    error={passwordError}
+                    helperText={passwordError ? 'Password is required' : ''}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                        setPasswordError(false);
+                    }}
                     fullWidth
                     required
                     size="small"
                     style={{
-                      marginTop: '10px'
+                      marginTop: '9px'
                     }}
                 />
                 <TextField
                     label="Confirm password"
                     type="password"
                     value={ConfirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    error={passwordError}
+                    helperText={passwordError ? 'Password is required' : ''}
+                    onChange={(e) => {
+                        setConfirmPassword(e.target.value);
+                        setConfirmPassword(false);
+                    }}
                     fullWidth
                     required
                     size="small"
                     style={{
-                      marginTop: '10px'
+                      marginTop: '9px'
                     }}
                 />
               
-                <br/>
-                <Button variant="contained" color="primary" onClick={handleClose} fullWidth>
+                <Button variant="contained" color="primary" onClick={handleLogin} fullWidth style={{marginTop:'5px'}}>
                     Sign Up
                 </Button>
                 <Typography  variant="body2" textAlign="center" className='textSignup1'>By submitting, I accept the Terms of Use.</Typography>
@@ -99,4 +141,3 @@ const Signup = ({ handleChange })=>{
 }
 
 export default Signup
-

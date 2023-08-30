@@ -45,7 +45,7 @@ function SearchPage() {
 
 
   useEffect(() => {
-    fetch("https://my-json-server.typicode.com/doaaelzamly/mock-api/houses")
+    fetch("https://my-json-server.typicode.com/doaaelzamly/mock-api2/houses")
       .then((response) => response.json())
       .then((data) => {
         setHouses(data);
@@ -69,7 +69,7 @@ function SearchPage() {
 
   return (
   <Layout>
-       <Container maxWidth="xl" style={{padding:'30px'}}>
+       <Container maxWidth="xl" style={{padding:'30px', marginBottom:'280px'}}>
         <Box className='form'>
            <form id='searchBox'>
                 <TextField type="search" variant="outlined" placeholder="Place, Neighborhood." id='heroSearch' onChange={handleCategroy}/>
