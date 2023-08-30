@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import AppBar from "@mui/material/AppBar";
 import SearchIcon from '@mui/icons-material/Search';
 import Box from "@mui/material/Box";
@@ -12,14 +14,19 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import LoginSignup from '../../Pages/LoginSignup';
+import { useAuth } from '../../Pages/Context';
 import image from "../../Util/imgs/logo1.png";
 
 function NavBar() {
-  // const { isAuth, setIsAuth } = useContext(AuthContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [logout, setLogout] = useState(false);
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
+
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
@@ -29,7 +36,11 @@ function NavBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const navigate = useNavigate();
+
+  const handleOpen = () => {
+    setOpen(true);
+};
+
   const handleabout = () => {
     navigate("/about");
   };
@@ -39,15 +50,28 @@ function NavBar() {
   const handlehome = () => {
     navigate("/");
   };
-  const handlelogin = () => {
-    navigate("/login");
-  };
-  const handlregister = () => {
-    navigate("/register");
-  };
+
+  const handleProfile = () => {
+    navigate("/profile");
+};
+
+const handleout = () => {
+  setLogout(!logout);
+  if (!logout) {
+      navigate("/");
+    toast.success('Signed out', {
+      position: 'bottom-left',
+      autoClose: 1500, 
+      style: {
+        color: '#4CAF50',
+        boxShadow: '0px 2px 4px rgba(0, 128, 0, 0.1)'
+      },
+    });
+  }
+};
+
   return (
     <AppBar position="static" sx={{ bgcolor: "transparent", height: "65px" }}>
-      {/* {console.log(isAuth,"navbar")} */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -153,43 +177,51 @@ function NavBar() {
           </Box>
           
             <>
-              <div>
+              <Box sx={{display:'flex', alignItems:'center'}}>
               <Button
                 onClick={handleSearch}
                 sx={{ my: 1, color: "#000", borderLeft:'1px'}}
               >
-                <SearchIcon/>
+                <SearchIcon sx={{width:'3vw', height:'5vh'}}/>
               </Button>
-              <IconButton
+
+            {isLoggedIn ? (
+
+            <Box>
+            <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="#000"
-              >
-                <AccountCircle />
-              </IconButton>
-            
-              <Menu
+            >
+                <AccountCircle sx={{width:'3vw', height:'7vh'}}/>
+            </IconButton>
+
+            <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                vertical: 'top',
+                horizontal: 'right',
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                vertical: 'top',
+                horizontal: 'right',
                 }}
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Log out</MenuItem>
-              </Menu>
-            </div>
+            >
+                <MenuItem onClick={handleProfile}>Profile</MenuItem>
+                <MenuItem onClick={handleout}>Log out</MenuItem>
+            </Menu>
+            </Box>
+            ) : (
+            <Box className='btnLogin1'> <LoginSignup onClick={handleOpen}/> </Box>
+            )}
+            </Box>
             </>
         
         </Toolbar>

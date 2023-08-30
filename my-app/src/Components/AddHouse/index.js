@@ -7,17 +7,17 @@ import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import FormControl from "@mui/material/FormControl";
 import { locationFilter, categorFilter } from "../../Util/filterData";
 import "./style.css";
+
 function AddHouse() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [city, setLocation] = useState();
+  const [location, setLocation] = useState();
   const [category, setCategory] = useState("");
   const [bedroom, setRooms] = useState();
   const [bathroom, setBathRooms] = useState();
@@ -70,7 +70,7 @@ function AddHouse() {
 
   useEffect(() => {
     if (userDate){
-    fetch("https://my-json-server.typicode.com/SajaRa20/newapi/houses", {
+    fetch("https://my-json-server.typicode.com/doaaelzamly/mock-api2/houses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +104,7 @@ function AddHouse() {
         id: "2",
         title,
         description,
-        city,
+        location,
         category,
         bedroom,
         bathroom,
@@ -169,7 +169,7 @@ function AddHouse() {
                   size="small"
                   variant="outlined"
                   name="location"
-                  value={city}
+                  value={location}
                   onChange={handleLocation}
                 >
                   {locationFilter.map((item) => (

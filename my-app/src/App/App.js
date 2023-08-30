@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {Landing} from '../Pages';
 import Details from '../Pages/Details';
 import Filter from '../Pages/Filter';
-// import Favorite from '../Pages/Favorite';
 import About from '../Pages/About';
 import Error from '../Pages/Error';
 import Profile from '../Pages/Profile';
@@ -20,7 +19,6 @@ function App() {
         <Route path="/" element={<Landing/>} />
         <Route path="/details/:id" element={<Details/>} />
         <Route path='/' element= {<PrivateRoute/>}>
-              {/* <Route path="/favorites" element={<Favorite/>}/> */}
               <Route path="/profile" element={<Profile/>} />
         </Route>
         <Route path="/filter" element={<Filter/>} />
