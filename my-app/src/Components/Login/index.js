@@ -37,11 +37,10 @@ const Login = ({ handleChange })=>{
 
 
     const handleLogin = async () => {
-        // Perform your login logic here
         setUsernameError(false);
         setPasswordError(false);
         setLoginError(false);
-        // Validate username and password
+        
         if (username.trim() === '') {
             setUsernameError(true);
         } else {
@@ -54,7 +53,7 @@ const Login = ({ handleChange })=>{
             setPasswordError(false);
         }
 
-        // Handle login logic
+        
         if (username.trim() !== '' && password !== '') {
            
                 const response = await fetch('https://my-json-server.typicode.com/doaaelzamly/mock-api2/user');
@@ -125,11 +124,7 @@ const Login = ({ handleChange })=>{
                     </Typography>
                 )}
 
-                <Typography className='textSignup'>
-                    Do you have an account?
-                    <Link href='#' style={{textDecoration:'none', fontSize:'13px', marginLeft:'3px', cursor:'pointer'}} 
-                    onClick={()=>handleChange("event",2)}>Sign up</Link>
-                </Typography>
+                
             </DialogContent>
     </Box>
    
