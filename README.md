@@ -46,10 +46,10 @@ As a user, I have the ability to create my own account and access the site easil
 
 # 👥Team
  👤 Lead Mentor
- Yasmeen Attallah
+     Yasmeen Attallah
  
  👤Team Members
-Doaa Elzamly
+     Doaa Elzamly
 
 # 🔍Resources
 https://material-ui.com/
