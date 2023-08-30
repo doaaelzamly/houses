@@ -45,7 +45,7 @@ As a Renter and owner user:
 As a user, I have the ability to create my own account and access the site easily. I can browse the homes currently available for rent according to the criteria that suit me, and I have the option to save any homes I like in my favorites list. All of my information is stored in my profile.
 
 # 👥Team
- ## 👤 Lead Mentor:
+ 👤 Lead Mentor:
      Yasmeen Attallah
  
  👤Team Members:
