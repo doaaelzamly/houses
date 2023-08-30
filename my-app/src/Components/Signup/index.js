@@ -3,6 +3,7 @@ import { Dialog, DialogTitle, DialogContent, TextField, Button, Typography, Link
 import { Container, Grid, Box} from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import { useAuth } from '../../Pages/Context';
 import './style.css';
 
 const Signup = ({ handleChange })=>{
@@ -15,6 +16,8 @@ const Signup = ({ handleChange })=>{
     const [phone, setPhone] = useState('');
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [comfirmPasswordError, setComfirmPasswordError] = useState(false);
+    const { login } = useAuth();
     
   
     const handleOpen = () => {
@@ -34,8 +37,6 @@ const Signup = ({ handleChange })=>{
       
     };
     const handleLogin = async () => {
-      setUsernameError(true);
-      setPasswordError(true);
       
       if (username.trim() === '') {
           setUsernameError(true);
@@ -48,7 +49,19 @@ const Signup = ({ handleChange })=>{
       } else {
           setPasswordError(false);
       }
+
+      if (ConfirmPassword === '' || ConfirmPassword !== password ) {
+        setComfirmPasswordError(true);
+      } else {
+        setComfirmPasswordError(false);
+      }
   };
+
+  const handlSignup = ()=>{
+    handleLogin();
+    login();
+    handleClose();
+  }
   
     return(
     <Box>
@@ -116,11 +129,11 @@ const Signup = ({ handleChange })=>{
                     label="Confirm password"
                     type="password"
                     value={ConfirmPassword}
-                    error={passwordError}
-                    helperText={passwordError ? 'Password is required' : ''}
+                    error={comfirmPasswordError}
+                    helperText={comfirmPasswordError ? 'Password is required' : ''}
                     onChange={(e) => {
                         setConfirmPassword(e.target.value);
-                        setConfirmPassword(false);
+                        setComfirmPasswordError(false);
                     }}
                     fullWidth
                     required
@@ -130,7 +143,7 @@ const Signup = ({ handleChange })=>{
                     }}
                 />
               
-                <Button variant="contained" color="primary" onClick={handleLogin} fullWidth style={{marginTop:'5px'}}>
+                <Button variant="contained" color="primary" onClick={handlSignup} fullWidth style={{marginTop:'5px'}}>
                     Sign Up
                 </Button>
                 <Typography  variant="body2" textAlign="center" className='textSignup1'>By submitting, I accept the Terms of Use.</Typography>
