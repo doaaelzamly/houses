@@ -36,9 +36,9 @@ function Footer() {
           <Box sx={{ flexGrow: 1 }} />
        
           <Box className='iconFooter'>
-            <InstagramIcon/>
-            <TwitterIcon/>
-            <WhatsAppIcon/>
+            <a href='https://www.instagram.com/doaaelzamly2000/' target='_blank' style={{color:'white'}}> <InstagramIcon/> </a>
+            <a href='https://twitter.com/Doaaelzamly2' target='_blank' style={{color:'white'}}> <TwitterIcon/> </a>
+            <a href='https://www.linkedin.com/in/doaa-elzamly/' target='_blank' style={{color:'white'}}><WhatsAppIcon/></a>
           </Box>
 
         </Toolbar>

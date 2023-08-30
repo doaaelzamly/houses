@@ -33,7 +33,7 @@ function Detail() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://my-json-server.typicode.com/doaaelzamly/mock-api/houses/${id}`)
+    fetch(`https://my-json-server.typicode.com/doaaelzamly/mock-api2/houses/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setHouses(data);
@@ -54,33 +54,6 @@ function Detail() {
         img1} = house;
 
 // Favorite
-        const addToFavorite = async (id) => {
-          const response = await fetch(
-            `https://my-json-server.typicode.com/doaaelzamly/mock-api/houses/${id}`
-          );
-          const item = await response.json();
-          fetch(
-            "https://my-json-server.typicode.com/doaaelzamly/mock-api/favorite",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(item),
-            }
-          )
-            .then((response) => {
-              if (response.ok) {
-                console.log("House added to favorites");
-                setIsFavorite(true);
-              } else {
-                console.error("Failed to add to favorites");
-              }
-            })
-            .catch((error) => {
-              console.error("Error adding to favorites:", error);
-            });
-        };
         
         const toggleFavorite = () => {
           setIsFavorite(!isFavorite);
@@ -138,18 +111,6 @@ function Detail() {
                     ${price}
                   </Typography>
                 </Box>
-        
-                {/* <CardActions className='cardActions1'>
-                  <Button style={{color:'#000'}}>
-                    {isFavorite ? (
-                      <FavoriteIcon style={{ color: "red", fontSize:'35px'}} />
-                    ) : (
-                      <FavoriteBorderIcon className="favorite" onClick={toggleFavorite} style={{fontSize:'35px'}}/>
-                    )}
-                  </Button>
-
-                <ToastContainer />
-                </CardActions> */}
              </Box>
           </Grid>
          
